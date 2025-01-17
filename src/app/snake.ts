@@ -31,9 +31,9 @@ type DirectionKey = 'up' | 'down' | 'left' | 'right';
 export class Snake
 {
 	private SETTINGS = {
-		grid: {size: 15, rows: 30, columns: 30},
+		grid: {size: 15, rows: 25, columns: 25},
 		game: {scoreIncrement: 10},
-		snake: {startLength: 3, startSpeed: 300, speedIncrement: 10, minSpeed: 100, growBy: 2}
+		snake: {startLength: 3, startSpeed: 200, speedIncrement: 10, minSpeed: 100, growBy: 2}
 	}
 
 	private DIRECTION = {
@@ -408,9 +408,10 @@ export class Snake
 
 				// all good to proceed with new snake head
 
+				const direction = this.DIRECTION;
 				let newSnakeHead:SnakePart = {
 					position: newPosition,
-					direction: this.DIRECTION[this.states.direction.name as keyof typeof this.DIRECTION]
+					direction: this.DIRECTION[this.states.direction.name as keyof typeof direction]
 				}
 				this.snake.push(newSnakeHead);
 

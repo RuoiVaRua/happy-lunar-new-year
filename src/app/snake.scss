@@ -16,6 +16,8 @@
 	grid-template-columns: repeat(var(--grid-columns), 1fr);
  	grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-gap: 1px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vw - 40px);
     
 	>div
 	{
