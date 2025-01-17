@@ -26,10 +26,12 @@ export enum SOUND
 	start = 'start'
 }
 
+
+type DirectionKey = 'up' | 'down' | 'left' | 'right';
 export class Snake
 {
 	private SETTINGS = {
-		grid: {size: 10, rows: 20, columns: 28},
+		grid: {size: 15, rows: 30, columns: 30},
 		game: {scoreIncrement: 10},
 		snake: {startLength: 3, startSpeed: 300, speedIncrement: 10, minSpeed: 100, growBy: 2}
 	}
@@ -190,9 +192,9 @@ export class Snake
 			}
 		})			
 
-		this.keyPressSubscription = this.keyPress.subscribe((key: string) => 
+		this.keyPressSubscription = this.keyPress.subscribe((key: DirectionKey) => 
 		{
-			if(this.states.game == GAME_STATES.playing)
+			if(this.states.game == GAME_STATES.playing && key in this.DIRECTION)
 			{
 				this.setDirection(this.DIRECTION[key])
 			}
@@ -408,7 +410,7 @@ export class Snake
 
 				let newSnakeHead:SnakePart = {
 					position: newPosition,
-					direction: this.DIRECTION[this.states.direction.name]
+					direction: this.DIRECTION[this.states.direction.name as keyof typeof this.DIRECTION]
 				}
 				this.snake.push(newSnakeHead);
 
