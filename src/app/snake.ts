@@ -1,5 +1,6 @@
 import '../styles.scss';
 import './snake.scss';
+import './happy-new-year.scss';
 
 import { Observable, Subscription, Subject } from "rxjs";
 
@@ -31,7 +32,7 @@ type DirectionKey = 'up' | 'down' | 'left' | 'right';
 export class Snake
 {
 	private SETTINGS = {
-		grid: {size: 15, rows: 25, columns: 25},
+		grid: {size: 15, rows: 30, columns: 30},
 		game: {scoreIncrement: 10},
 		snake: {startLength: 3, startSpeed: 200, speedIncrement: 10, minSpeed: 100, growBy: 2}
 	}
