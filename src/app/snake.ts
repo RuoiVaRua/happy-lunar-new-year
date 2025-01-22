@@ -6,6 +6,7 @@ import { Observable, Subscription, Subject } from "rxjs";
 
 import { States, Position, SnakePart, Direction } from "./Interfaces";
 import { Input } from './input';
+import { happyNewYearWordPositions } from './happy-new-year';
 
 //declare var jsfx:any;
 
@@ -303,6 +304,17 @@ export class Snake
 
 		let foodSquare = this.grid[this.getIndexFromPosition(this.food)];
 		foodSquare.className = 'food';
+
+		const board = document.getElementById('board');
+		if (board) {
+			console.log('========== happyNewYearWordPositions.includes(index) ', happyNewYearWordPositions);
+			Array.from(board.childNodes).forEach((node: Element, index: number) => {
+				if (node.nodeName === 'DIV' && happyNewYearWordPositions.includes(index)) {
+					node.classList.add('word');
+					console.log('========== node.className ', node.className);
+				}
+			})
+		}
 	}
 
 	private getIndexFromPosition(position:Position):number
