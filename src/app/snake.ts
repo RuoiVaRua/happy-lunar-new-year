@@ -307,11 +307,9 @@ export class Snake
 
 		const board = document.getElementById('board');
 		if (board) {
-			console.log('========== happyNewYearWordPositions.includes(index) ', happyNewYearWordPositions);
 			Array.from(board.childNodes).forEach((node: Element, index: number) => {
 				if (node.nodeName === 'DIV' && happyNewYearWordPositions.includes(index)) {
 					node.classList.add('word');
-					console.log('========== node.className ', node.className);
 				}
 			})
 		}
