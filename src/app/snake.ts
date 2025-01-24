@@ -6,7 +6,7 @@ import { Observable, Subscription, Subject } from "rxjs";
 
 import { States, Position, SnakePart, Direction } from "./Interfaces";
 import { Input } from './input';
-import { happyNewYearWordPositions } from './happy-new-year';
+import { happyNewYearWordPositions, snakeBlackPositions, snakeBrownPositions, snakeRedPositions, snakeTanPositions } from './happy-new-year';
 
 //declare var jsfx:any;
 
@@ -305,14 +305,8 @@ export class Snake
 		let foodSquare = this.grid[this.getIndexFromPosition(this.food)];
 		foodSquare.className = 'food';
 
-		const board = document.getElementById('board');
-		if (board) {
-			Array.from(board.childNodes).forEach((node: Element, index: number) => {
-				if (node.nodeName === 'DIV' && happyNewYearWordPositions.includes(index)) {
-					node.classList.add('word');
-				}
-			})
-		}
+		// this.displayHappyNewYearWords();
+		this.displaySnake();
 	}
 
 	private getIndexFromPosition(position:Position):number
@@ -461,5 +455,55 @@ export class Snake
 		this.updateGameState(GAME_STATES.ended);
 		this.direction.next('');
 		this.draw();
+	}
+
+	private displayHappyNewYearWords()
+	{
+		const board = document.getElementById('board');
+		let count = 0;
+		if (board) {
+			Array.from(board.childNodes).forEach((node: Element, index: number) => {
+				if (node.nodeName === 'DIV' && happyNewYearWordPositions.includes(index)) {
+					count++;
+					setTimeout(() => {
+						node.classList.add('word');
+					}, 50 * count);
+				}
+			})
+		}
+	}
+
+	private displaySnake()
+	{
+		const board = document.getElementById('board');
+		let count = 0;
+		if (board) {
+			Array.from(board.childNodes).forEach((node: Element, index: number) => {
+				if (snakeBlackPositions.includes(index)) {
+					count++;
+					setTimeout(() => {
+						node.classList.add('black');
+					}, 10 * count);
+				}
+				if (snakeBrownPositions.includes(index)) {
+					count++;
+					setTimeout(() => {
+						node.classList.add('brown');
+					}, 10 * count);
+				}
+				if (snakeTanPositions.includes(index)) {
+					count++;
+					setTimeout(() => {
+						node.classList.add('tan');
+					}, 10 * count);
+				}
+				if (snakeRedPositions.includes(index)) {
+					count++;
+					setTimeout(() => {
+						node.classList.add('red');
+					}, 10 * count);
+				}
+			})
+		}
 	}
 }
