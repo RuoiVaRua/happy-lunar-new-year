@@ -4,12 +4,14 @@ import './app.scss';
 import { Observable, Subscription } from "rxjs";
 import { Snake, GAME_STATES } from "./snake";
 import { Pkg } from "../package";
+import { HappyNewYear } from './happy-new-year';
 
 const html = require('./app.html');
 
 export class App
 {
     private game:Snake;
+    private happyNewYear: HappyNewYear;
     private score:HTMLElement;
     private container:HTMLElement;
     private boardContainer:HTMLElement;
@@ -45,7 +47,16 @@ export class App
             this.container.setAttribute('class', state)
         })
         this.game.direction.subscribe((direction:string) => this.boardContainer.setAttribute('class', direction))
-        this.game.reset();
+
+        // run 'happy new year' words before starting game
+        this.happyNewYear = new HappyNewYear(board);
+        this.happyNewYear.displayHappyNewYearWords()
+            .then(() => {
+                this.happyNewYear.displaySnake()
+                    .then(() => {
+                        this.game.reset();
+                    })
+            });
     }
 
     startGame()

@@ -7,15 +7,19 @@
 		background-color: #201f1d;
 	}
 	
-	.brown {
-		background-color: #894514;
+	.orange {
+		background-color: #e48237;
 	}
 	
 	.tan {
-		background-color: #cb8643;
+		background-color: #f0c19d;
 	}
 	
 	.red {
 		background-color: #fd0005;
+	}
+
+	.flash {
+		animation: flash 0.5s steps(1) infinite;
 	}
 }
