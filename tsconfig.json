@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "lib": ["es2016", "dom"], // Thêm es6 để hỗ trợ các kiểu ES6, có thể thêm "dom" nếu làm việc với browser
     "module": "commonjs",
     "moduleResolution": "node",
