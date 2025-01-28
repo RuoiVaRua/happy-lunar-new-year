@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/jpg" href="/public/snake.jpg"/>
     <title>Snake</title>
     <!-- <script src="https://raw.githubusercontent.com/loov/jsfx/master/jsfx.js"></script> -->
 </head>
 <body>
     <div id="app-container"></div>
-<script type="text/javascript" src="/happy-lunar-new-year/vendor.1495a32e4e8355e04f5b.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.1495a32e4e8355e04f5b.js"></script></body>
+
+    <audio id="myAudio" autoplay loop>
+        <source src="/public/NgayXuanLongPhungSumVay-Beat.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        document.addEventListener("click", function () {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        }, { once: true });
+    </script>     
+<script type="text/javascript" src="/happy-lunar-new-year/vendor.41e44c4157f2e90b25b1.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.41e44c4157f2e90b25b1.js"></script></body>
 </html>
