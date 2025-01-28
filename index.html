@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/jpg" href="/public/snake.jpg"/>
     <title>Snake</title>
-    <!-- <script src="https://raw.githubusercontent.com/loov/jsfx/master/jsfx.js"></script> -->
 </head>
 <body>
     <div id="app-container"></div>
@@ -20,6 +19,18 @@
             var audio = document.getElementById("myAudio");
             audio.play();
         }, { once: true });
-    </script>     
-<script type="text/javascript" src="/happy-lunar-new-year/vendor.a89a12c654170e3416de.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.a89a12c654170e3416de.js"></script></body>
+    </script>  
+    
+    <script>
+        // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
+        const repoName = window.location.pathname.split('/')[1];
+        if (repoName) {
+            const audioElement = document.querySelector('#myAudio source');
+            audioElement.src = `/${repoName}/public/NgayXuanLongPhungSumVay-Beat.mp3`;
+
+            const faviconElement = document.querySelector('link[rel="shortcut icon"]');
+            faviconElement.href = `/${repoName}/public/snake.jpg`;
+        }
+    </script>    
+<script type="text/javascript" src="/happy-lunar-new-year/vendor.0856dca819b1cffe86cf.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.0856dca819b1cffe86cf.js"></script></body>
 </html>
