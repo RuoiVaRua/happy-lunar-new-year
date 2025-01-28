@@ -34,7 +34,7 @@ export class Snake
 	private SETTINGS = {
 		grid: {size: 15, rows: 30, columns: 30},
 		game: {scoreIncrement: 10},
-		snake: {startLength: 3, startSpeed: 200, speedIncrement: 10, minSpeed: 100, growBy: 2}
+		snake: {startLength: 3, startSpeed: 250, speedIncrement: 10, minSpeed: 100, growBy: 2}
 	}
 
 	private DIRECTION = {
@@ -138,9 +138,15 @@ export class Snake
 	private touchEndSubscription:Subscription;
 	private keyRestartSubscription:Subscription;
 
-	constructor(boardElement: HTMLElement)
+	constructor(boardElement: HTMLElement, size?: number, rows?: number, cols?: number)
 	{
 		this.board = boardElement;
+		this.board.innerHTML = '';
+		if (size && rows && cols) {
+			this.SETTINGS.grid.size = size;
+			this.SETTINGS.grid.rows = rows;
+			this.SETTINGS.grid.columns = cols;
+		}
 		
 		// setup the game board grid
 		
@@ -204,7 +210,6 @@ export class Snake
 		this.keyRestartSubscription = onEnter.subscribe(e => this.start())
 	}
 
-	//
 	private playSound(type:SOUND)
 	{
 		let options = this.sounds[type];

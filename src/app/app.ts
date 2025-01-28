@@ -22,6 +22,7 @@ export class App
         container.innerHTML = html;   
         this.setupUI();
         this.setupGame();
+        this.runHappyNewYear();
     }
 
     setupUI()
@@ -35,11 +36,15 @@ export class App
         console.log(Pkg().version);
     }
 
-    setupGame()
+    setupGame(size?: number, rows?: number, cols?: number)
     {
         let board = document.getElementById('board');
 
-        this.game = new Snake(board);
+        if (size && rows && cols) {
+            this.game = new Snake(board, size, rows, cols);
+        } else {
+            this.game = new Snake(board);
+        }
         this.game.score.subscribe((score:number) => this.score.innerHTML = String(score));
         this.game.state.subscribe((state:string) => 
         {
@@ -47,14 +52,16 @@ export class App
             this.container.setAttribute('class', state)
         })
         this.game.direction.subscribe((direction:string) => this.boardContainer.setAttribute('class', direction))
-
-        this.happyNewYear = new HappyNewYear(board);
-        this.runGame();
     }
 
-    async runGame() {
+    async runHappyNewYear() {
+        let board = document.getElementById('board');
+        
+        this.happyNewYear = new HappyNewYear(board);
         await this.happyNewYear.displayHappyNewYearWords();
         await this.happyNewYear.displaySnake();
+        
+        this.setupGame(20, 20, 20);
         this.game.reset();
     }
     
