@@ -60,20 +60,20 @@ export class Snake
 		"start":{
 			"Frequency":{"Start":463.2977575242697,"Slide":0.4268311992714056,"RepeatSpeed":0.6870767779635416},
 			"Generator":{"A":0.015696072909390766},
-			"Volume":{"Sustain":0.11353385475559997,"Decay":0.15242709930669884}
+			"Volume":{"Sustain":0.11353385475559997,"Decay":0.15242709930669884, "Master":0.1}
 		},
 		"collect1":{
 			"Frequency":{"Start":1183.9224793246758,"ChangeSpeed":0.12793431035602038,"ChangeAmount":4.8612434857196085},
-			"Volume":{"Sustain":0.011448880380128946,"Decay":0.3895997546965799,"Punch":0.4554389528366015}
+			"Volume":{"Sustain":0.011448880380128946,"Decay":0.3895997546965799,"Punch":0.4554389528366015, "Master":0.18}
 		},
 		"collect2":{
 			"Frequency":{"Start":1070.9337014976563,"ChangeSpeed":0.1375978771153015,"ChangeAmount":5.9409661118536246},
-			"Volume":{"Sustain":0.04890791064198004,"Decay":0.3415421194668815,"Punch":0.46291381941601983}
+			"Volume":{"Sustain":0.04890791064198004,"Decay":0.3415421194668815,"Punch":0.46291381941601983, "Master":0.18}
 		},
 		"dead":{
 			"Frequency":{"Start":194.70758491034655,"Slide":-0.011628522004559189,"ChangeSpeed":0.6591296059731018,"ChangeAmount":2.6287197798189297},
 			"Generator":{"Func":"noise"},
-			"Volume":{"Sustain":0.17655222296084297,"Decay":0.24077933399701645,"Punch":0.6485369099751499}
+			"Volume":{"Sustain":0.17655222296084297,"Decay":0.24077933399701645,"Punch":0.6485369099751499, "Master":0.2}
 		},
 		"move1":{
 			"Frequency":{"Start":452,"Slide":-0.04,"Min":30,"DeltaSlide":-0.05},
@@ -204,6 +204,7 @@ export class Snake
 		this.keyRestartSubscription = onEnter.subscribe(e => this.start())
 	}
 
+	//
 	private playSound(type:SOUND)
 	{
 		let options = this.sounds[type];

@@ -48,17 +48,16 @@ export class App
         })
         this.game.direction.subscribe((direction:string) => this.boardContainer.setAttribute('class', direction))
 
-        // run 'happy new year' words before starting game
         this.happyNewYear = new HappyNewYear(board);
-        this.happyNewYear.displayHappyNewYearWords()
-            .then(() => {
-                this.happyNewYear.displaySnake()
-                    .then(() => {
-                        this.game.reset();
-                    })
-            });
+        this.runGame();
     }
 
+    async runGame() {
+        await this.happyNewYear.displayHappyNewYearWords();
+        await this.happyNewYear.displaySnake();
+        this.game.reset();
+    }
+    
     startGame()
     {
         if(this.gameState == GAME_STATES.ready || this.gameState == GAME_STATES.ended)
