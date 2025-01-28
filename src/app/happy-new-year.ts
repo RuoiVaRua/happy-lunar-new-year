@@ -91,10 +91,10 @@ export class HappyNewYear
 						setTimeout(() => {
 							const colors = Array.from(document.querySelectorAll('.black, .orange, .tan, .red'));
 							colors.forEach(color => color.classList.add('flash'))
-						}, 20 * count + 3000);						
+						}, 20 * count + 2000);						
 						setTimeout(() => {
 							resolve(true);
-						}, 20 * count + 5000);
+						}, 20 * count + 4000);
 					}
 				})
 			}
