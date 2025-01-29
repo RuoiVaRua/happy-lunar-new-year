@@ -10,7 +10,7 @@
 <body>
     <div id="app-container"></div>
 
-    <audio id="myAudio" autoplay muted loop>
+    <audio id="myAudio" autoplay loop>
         <source src="/public/NgayXuanLongPhungSumVay-Beat.mp3" type="audio/mpeg">
     </audio>
     
@@ -24,7 +24,18 @@
             const faviconElement = document.querySelector('link[rel="shortcut icon"]');
             faviconElement.href = `/${repoName}/public/snake.jpg`;
         }
-    </script>   
+    </script>
+
+    <script>
+        window.onload = function() {
+            const clickEvent = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+            document.dispatchEvent(clickEvent);
+        };
+    </script>       
 
     <script>
         document.addEventListener("click", function () {
@@ -33,13 +44,16 @@
         }, { once: true });
     </script>  
     
-    <script>
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible') {
-                const audio = document.getElementById('myAudio');
-                audio.play();
-            }
+    <!-- <script>
+        window.addEventListener('load', async () => {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const response = await fetch(`${repoName ? '/' + repoName : ''}/public/NgayXuanLongPhungSumVay-Beat.mp3`);
+            const buffer = await response.arrayBuffer();
+            const source = audioContext.createBufferSource();
+            source.buffer = await audioContext.decodeAudioData(buffer);
+            source.connect(audioContext.destination);
+            source.start(0);
         });
-    </script>   
-<script type="text/javascript" src="/happy-lunar-new-year/vendor.12216488243de879e644.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.12216488243de879e644.js"></script></body>
+    </script>   --> 
+<script type="text/javascript" src="/happy-lunar-new-year/vendor.92a36793feb5402532d4.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.92a36793feb5402532d4.js"></script></body>
 </html>
