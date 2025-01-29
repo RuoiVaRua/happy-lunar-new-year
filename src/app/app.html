@@ -7,7 +7,10 @@
         <div id="board"></div>
           
         <div class="info-container">
-            <button id="start-button" class="state-driven"><span class="re state-driven">RE</span>START</button>
+            <button id="start-button" class="state-driven">
+                <img id="start-button-img" src="/public/play.svg" width="20" height="20"/>
+                <span class="re state-driven">RE</span>START
+            </button>
             <div class="flex"></div>
             <div id="score">0</div>
         </div>
@@ -17,4 +20,13 @@
         <span class="touch">Swipe up, down, left or right to control.</span>
     </div>
 </div>
+
+<script>
+    // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
+    const repoName = window.location.pathname.split('/')[1];
+    if (repoName) {
+        const startButtonImg = document.getElementById('start-button-img');
+        faviconElement.href = `/${repoName}/public/play.svg`;
+    }
+</script>
 
