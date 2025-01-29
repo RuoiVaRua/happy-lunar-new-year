@@ -20,6 +20,13 @@ export class App
     constructor(container:HTMLElement)
     {
         container.innerHTML = html;   
+        // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
+        const repoName = window.location.pathname.split('/')[1];
+        if (repoName) {
+            const startButtonImg = document.getElementById('start-button-img') as HTMLElement;
+            if (startButtonImg)
+                startButtonImg.setAttribute('src', `/${repoName}/public/play.svg`);
+        }        
         this.setupUI();
         this.setupGame();
         this.runHappyNewYear();

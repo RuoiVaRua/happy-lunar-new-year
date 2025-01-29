@@ -21,12 +21,3 @@
     </div>
 </div>
 
-<script>
-    // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
-    const repoName = window.location.pathname.split('/')[1];
-    if (repoName) {
-        const startButtonImg = document.getElementById('start-button-img');
-        startButtonImg.src = `/${repoName}/public/play.svg`;
-    }
-</script>
-
