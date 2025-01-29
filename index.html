@@ -10,16 +10,9 @@
 <body>
     <div id="app-container"></div>
 
-    <audio id="myAudio" autoplay loop>
+    <audio id="myAudio" autoplay muted loop>
         <source src="/public/NgayXuanLongPhungSumVay-Beat.mp3" type="audio/mpeg">
     </audio>
-    
-    <script>
-        document.addEventListener("click", function () {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        }, { once: true });
-    </script>  
     
     <script>
         // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
@@ -31,6 +24,27 @@
             const faviconElement = document.querySelector('link[rel="shortcut icon"]');
             faviconElement.href = `/${repoName}/public/snake.jpg`;
         }
+    </script>   
+
+    <script>
+        document.addEventListener("click", function () {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        }, { once: true });
+    </script>  
+    
+    <script>
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('myAudio');
+            audio.muted = false; // Bỏ tắt tiếng sau khi trang đã load
+            audio.play().catch(() => {
+                // Xử lý khi trình duyệt từ chối phát tự động
+                const turnOnVolume = confirm("Play music?!");
+                if (turnOnVolume) {
+                    audio.play();
+                }
+            });
+        });
     </script>    
-<script type="text/javascript" src="/happy-lunar-new-year/vendor.0856dca819b1cffe86cf.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.0856dca819b1cffe86cf.js"></script></body>
+<script type="text/javascript" src="/happy-lunar-new-year/vendor.5bfc40a944d5d9fed982.js"></script><script type="text/javascript" src="/happy-lunar-new-year/app.5bfc40a944d5d9fed982.js"></script></body>
 </html>
