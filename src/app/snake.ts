@@ -166,7 +166,29 @@ export class Snake
 
 		this.input = new Input(document.body);
 	
-		this.keyPress = Observable.fromEvent(document, "keydown")
+		// sửa cho portfolio web - vuhung.online - start
+		// Cố gắng đặt focus vào cửa sổ iframe khi khởi tạo
+		window.focus();		
+		// Thêm trình lắng nghe sự kiện click để đảm bảo iframe có focus mỗi khi click vào chrome hoặc chính iframe
+		Observable.fromEvent(document, "click").subscribe(() => {
+			if (typeof window.focus === 'function') {
+				window.focus();
+			}
+			if (document.body && typeof document.body.focus === 'function') {
+				document.body.focus();
+			}
+		});
+		Observable.fromEvent(window, "focus").subscribe(() => {
+			if (typeof window.focus === 'function') {
+				window.focus();
+			}
+			if (document.body && typeof document.body.focus === 'function') {
+				document.body.focus();
+			}
+		});
+		// sửa cho portfolio web - vuhung.online - end
+
+		this.keyPress = Observable.fromEvent(window, "keydown") // Thay đổi document thành window
 			.filter((e:KeyboardEvent) => ['arrowright', 'arrowleft', 'arrowup', 'arrowdown'].indexOf(e.key.toLowerCase()) >= 0)
 			.map((e:KeyboardEvent) => e.key.toLowerCase().replace('arrow',''))
 
