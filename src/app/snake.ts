@@ -166,7 +166,7 @@ export class Snake
 
 		this.input = new Input(document.body);
 	
-		// sửa cho portfolio web - vuhung.online - start
+		// sửa cho portfolio web - vuhung.space - start
 		// Cố gắng đặt focus vào cửa sổ iframe khi khởi tạo
 		window.focus();		
 		// Thêm trình lắng nghe sự kiện click để đảm bảo iframe có focus mỗi khi click vào chrome hoặc chính iframe
@@ -186,7 +186,7 @@ export class Snake
 				document.body.focus();
 			}
 		});
-		// sửa cho portfolio web - vuhung.online - end
+		// sửa cho portfolio web - vuhung.space - end
 
 		this.keyPress = Observable.fromEvent(window, "keydown") // Thay đổi document thành window
 			.filter((e:KeyboardEvent) => ['arrowright', 'arrowleft', 'arrowup', 'arrowdown'].indexOf(e.key.toLowerCase()) >= 0)
